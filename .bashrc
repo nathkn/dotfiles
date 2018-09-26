@@ -121,3 +121,27 @@ export LS_COLORS='rs=0:di=1;35:ln=01;36:mh=00:pi=40;33:so=01;35:do=01;35:bd=40;3
 export DOCKER_HOST=tcp://0.0.0.0:2375
 export LD_LIBRARY_PATH=/usr/local/lib:$LD_LIBRARY_PATH
 export PS1='[\u@\h \W]$ '
+
+source <(helm completion bash)
+source <(oc completion bash)
+source <(skaffold completion bash)
+
+# bash parameter completion for the dotnet CLI
+
+_dotnet_bash_complete()
+{
+  local word=${COMP_WORDS[COMP_CWORD]}
+
+  local completions
+  completions="$(dotnet complete --position "${COMP_POINT}" "${COMP_LINE}")"
+
+  COMPREPLY=( $(compgen -W "$completions" -- "$word") )
+}
+
+complete -f -F _dotnet_bash_complete dotnet
+
+export GOPATH=/home/g558617/go
+
+export EDITOR=vi
+export PATH=$PATH:/usr/local/go/bin
+export PATH=$PATH:/home/g558617/go/bin
