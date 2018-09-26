@@ -145,3 +145,5 @@ export GOPATH=/home/g558617/go
 export EDITOR=vi
 export PATH=$PATH:/usr/local/go/bin
 export PATH=$PATH:/home/g558617/go/bin
+
+export GPG_TTY=$(tty)
